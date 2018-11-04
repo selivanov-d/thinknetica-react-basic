@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import HelloWorld from './components/HelloWorld';
-import SimpleMath from './modules/SimpleMath';
+import Receipt from './modules/Receipt';
+import ReceiptComponent from './components/Receipt';
 
-// temporary examples of SimpleMath module usage
-console.log(SimpleMath.add(4, 5));
-console.log(SimpleMath.subtract(10, 1));
-console.log(SimpleMath.multiply(3, 3));
-console.log(SimpleMath.divide(27, 3));
+const receipt = new Receipt();
 
-ReactDOM.render(<HelloWorld />, document.getElementById('app'));
+// temporary example of Receipt module usage
+receipt.add('flour');
+receipt.add('flour');
+receipt.remove('flour');
+receipt.add('butter');
+receipt.add('sugar');
+receipt.add('yeast');
+
+const appRoot = document.getElementById('app');
+
+ReactDOM.render(<ReceiptComponent receipt={{receipt}}/>, appRoot);

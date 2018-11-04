@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4"
@@ -10,6 +11,7 @@
     "react-dom": "^16.6.0"
   },
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "dev": "parcel watch index.html"
   }
 }
