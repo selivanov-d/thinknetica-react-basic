@@ -1,6 +1,6 @@
 import React from 'react';
 
-import currencyFormatter from '../helpers/currencyFormatter';
+import currencyFormatter from '../../helpers/currencyFormatter';
 
 const Price = ({value}) => {
   return (

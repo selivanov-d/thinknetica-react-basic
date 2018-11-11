@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row, Col} from 'reactstrap';
 
-import ProductCard from './ProductCard';
+import ProductCard from '../ProductCard/Card';
 
 const CatalogItems = (props) => {
   const {products} = props;
@@ -12,13 +12,9 @@ const CatalogItems = (props) => {
         {
           products.map(product => {
             return (
-              <Col xs="12" sm="6" md="4" lg="3" xl="3">
+              <Col xs="12" sm="6" md="4" lg="3" xl="3" key={product.id}>
                 <ProductCard
-                  key={product.id}
-                  title={product.title}
-                  price={product.price}
-                  imageUrl={product.imageUrl}
-                  description={product.description}
+                  product={product}
                   className="mb-3"
                 />
               </Col>

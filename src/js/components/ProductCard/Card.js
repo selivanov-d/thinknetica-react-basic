@@ -2,17 +2,17 @@ import React from 'react';
 import {Card, CardBody, CardTitle, CardText} from 'reactstrap';
 import cn from 'classnames';
 
-import ProductCardImage from './ProductCardImage';
-import Price from './Price';
-import TextBox from './TextBox';
+import Price from '../utilities/Price';
+import TextBox from '../utilities/TextBox';
+import ProductCardImage from './CardImage';
 
 const ProductCard = (props) => {
-  const imageAlt = (props.imageAlt) ? props.imageAlt : props.title;
-  const {imageUrl, title, description, price, className} = props;
+  const {title, price, imageUrl, imageAlt = title, description} = props.product;
+  const {className} = props;
 
   return (
     <Card className={cn('catalog-items_item product-card', className)}>
-      <ProductCardImage imageUrl={imageUrl} imageAlt={imageAlt} />
+      <ProductCardImage src={imageUrl} alt={imageAlt}/>
 
       <CardBody>
         <CardTitle>{title}</CardTitle>
