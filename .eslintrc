@@ -8,6 +8,9 @@
   "plugins": [
     "babel"
   ],
+  "settings": {
+    "import/resolver": "webpack"
+  },
   "rules": {
     "react/jsx-filename-extension": [
       1,
@@ -17,6 +20,10 @@
           ".jsx"
         ]
       }
+    ],
+    "import/no-unresolved": [
+      2,
+      { "caseSensitive": false }
     ]
   }
 }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import products from '../constants/products';
+import products from 'js_root/constants/products';
 
-import CatalogItems from '../components/Catalog/CatalogItems';
-import CartContext from '../contexts/CartContext';
-import CartContainer from '../components/Cart/CartContainer';
+import CatalogItems from 'js_root/components/Catalog/CatalogItems';
+import CartContext from 'js_root/contexts/CartContext';
+import CartContainer from 'js_root/components/Cart/CartContainer';
 
 class CatalogPage extends Component {
   state = {
