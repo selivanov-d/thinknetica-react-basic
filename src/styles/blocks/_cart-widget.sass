@@ -1,0 +1,26 @@
+.cart-widget
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  width: 235px
+  font-size: 12px
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, .2)
+  padding: 30px 15px
+  background-color: #fff
+
+  &.-drop-ready
+    background-color: rgba($green, .2)
+
+.cart-widget_body
+  min-height: 100%
+
+.cart-widget_total
+  padding: 20px 0
+  border-top: 1px solid rgba(0, 0, 0, .125)
+
+.cart-widget_item
+  padding: 10px 0
+
+  & + &
+    border-top: 1px solid rgba(0, 0, 0, .125)

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Image from '../utilities/Image';
+import Image from 'components/utilities/Image';
 
 const ProductCardImage = ({
   src,

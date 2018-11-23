@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 
-import ProductCard from '../ProductCard/ProductCard';
+import ProductCard from 'components/ProductCard/ProductCard';
 
 const CatalogItems = ({ products }) => (
   <div className="catalog-items">
@@ -21,18 +21,14 @@ const CatalogItems = ({ products }) => (
   </div>
 );
 
-CatalogItems.defaultProps = {
-  products: [],
-};
-
 CatalogItems.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     imageUrl: PropTypes.string,
-    description: PropTypes.string,
-  })),
+    shortDescription: PropTypes.string,
+  })).isRequired,
 };
 
 export default CatalogItems;

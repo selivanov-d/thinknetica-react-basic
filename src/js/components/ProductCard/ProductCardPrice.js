@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import currencyFormatter from '../../helpers/currencyFormatter';
+import CurrencyFormatter from 'components/utilities/CurrencyFormatter';
 
 const ProductCardPrice = ({ value }) => (
-  <div className="product-card_price">{currencyFormatter(value)}</div>
+  <div className="product-card_price">
+    <CurrencyFormatter number={value} />
+  </div>
 );
 
-ProductCardPrice.defaultProps = {
-  value: '--',
-};
-
 ProductCardPrice.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.number.isRequired,
 };
 
 export default ProductCardPrice;

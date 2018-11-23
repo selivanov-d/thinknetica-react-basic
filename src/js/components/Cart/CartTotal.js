@@ -1,21 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import currencyFormatter from '../../helpers/currencyFormatter';
-
-const CartTotal = ({ totalRaw }) => {
-  const totalFormatted = currencyFormatter(totalRaw);
-
-  return (
-    <div className="cart-container_total">
-      Итого:
-      <span className="font-weight-bold">{totalFormatted}</span>
-    </div>
-  );
-};
+const CartTotal = ({ children }) => (
+  <div className="cart_total">
+    Итого:
+    {' '}
+    <strong>{children}</strong>
+  </div>
+);
 
 CartTotal.propTypes = {
-  totalRaw: PropTypes.number.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export default CartTotal;

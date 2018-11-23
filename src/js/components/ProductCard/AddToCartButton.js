@@ -7,7 +7,7 @@ import {
   InputGroupAddon,
 } from 'reactstrap';
 
-import CartContext from '../../contexts/CartContext';
+import CartContext from 'contexts/CartContext';
 
 class AddToCartButton extends Component {
   state = {
@@ -26,11 +26,11 @@ class AddToCartButton extends Component {
       <InputGroup className="add-to-cart-control">
         <InputGroupAddon addonType="prepend" className="add-to-cart-control_addon">
           <CartContext.Consumer>
-            {({ addItemToCart }) => (
+            {({ changeItemQuantityInCart }) => (
               <Button
                 block
                 color="primary"
-                onClick={() => addItemToCart(cartItemToAdd, quantity)}
+                onClick={() => changeItemQuantityInCart(cartItemToAdd.id, quantity)}
               >
                 Купить
               </Button>
