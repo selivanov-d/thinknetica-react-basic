@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  NavLink,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { Navbar, Nav, NavItem } from 'reactstrap';
 
 import routes from 'routes';
 import CartContext from 'contexts/CartContext';
 import products from 'constants/products';
+import MainMenu from 'components/MainMenu/MainMenu';
 
 class App extends Component {
   state = {
@@ -85,25 +81,7 @@ class App extends Component {
     return (
       <Router>
         <CartContext.Provider value={cartState}>
-          <Navbar color="light" light expand="md">
-            <Nav navbar>
-              <NavItem>
-                <NavLink to="/" exact className="nav-link" activeClassName="active">
-                  Главная
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/contacts/" className="nav-link" activeClassName="active">
-                  Контакты
-                </NavLink>
-              </NavItem>
-              <NavItem className="ml-auto">
-                <NavLink to="/cart/" className="nav-link" activeClassName="active">
-                  Корзина
-                </NavLink>
-              </NavItem>
-            </Nav>
-          </Navbar>
+          <MainMenu />
 
           <Switch>
             {renderRoutes(routes)}
