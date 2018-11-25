@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 import cn from 'classnames';
 
+import { catalogItemPagePath } from 'helpers/pathes';
 import ProductCartPrice from 'components/ProductCard/ProductCardPrice';
 import ProductCardImage from 'components/ProductCard/ProductCardImage';
 import AddToCartButton from 'components/ProductCard/AddToCartButton';
@@ -43,7 +44,7 @@ class ProductCard extends Component {
 
         <CardBody>
           <CardTitle>
-            <Link to={`/product/${id}`}>{title}</Link>
+            <Link to={catalogItemPagePath(id)}>{title}</Link>
           </CardTitle>
           <CardText className="product-card_text">{shortDescription}</CardText>
           <ProductCartPrice value={price} />

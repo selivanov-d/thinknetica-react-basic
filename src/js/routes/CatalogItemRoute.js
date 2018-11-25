@@ -1,10 +1,10 @@
-import ContactsItemPage from 'pages/CatalogItemPage';
+import CatalogItemPage from 'pages/CatalogItemPage';
 import { catalogItemPagePath } from 'helpers/pathes';
 
-const ContactsPageRoute = {
-  component: ContactsItemPage,
+const CatalogItemPageRoute = {
+  component: CatalogItemPage,
   path: catalogItemPagePath(),
   exact: true,
 };
 
-export default ContactsPageRoute;
+export default CatalogItemPageRoute;
