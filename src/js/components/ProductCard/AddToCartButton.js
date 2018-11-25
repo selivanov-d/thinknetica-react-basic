@@ -10,6 +10,8 @@ import {
 import CartContext from 'contexts/CartContext';
 
 class AddToCartButton extends Component {
+  static contextType = CartContext;
+
   state = {
     quantity: 1,
   };
@@ -21,21 +23,18 @@ class AddToCartButton extends Component {
   render() {
     const { cartItemToAdd } = this.props;
     const { quantity } = this.state;
+    const { changeItemQuantityInCart } = this.context;
 
     return (
       <InputGroup className="add-to-cart-control">
         <InputGroupAddon addonType="prepend" className="add-to-cart-control_addon">
-          <CartContext.Consumer>
-            {({ changeItemQuantityInCart }) => (
-              <Button
-                block
-                color="primary"
-                onClick={() => changeItemQuantityInCart(cartItemToAdd.id, quantity)}
-              >
-                Купить
-              </Button>
-            )}
-          </CartContext.Consumer>
+          <Button
+            block
+            color="primary"
+            onClick={() => changeItemQuantityInCart(cartItemToAdd.id, quantity)}
+          >
+            Купить
+          </Button>
         </InputGroupAddon>
         <Input
           type="number"
