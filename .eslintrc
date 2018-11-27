@@ -2,12 +2,49 @@
   "extends": "airbnb",
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
+  "root": true,
   "parser": "babel-eslint",
   "plugins": [
     "babel"
   ],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          [
+            "components",
+            "./src/js/components/"
+          ],
+          [
+            "constants",
+            "./src/js/constants/"
+          ],
+          [
+            "contexts",
+            "./src/js/contexts/"
+          ],
+          [
+            "helpers",
+            "./src/js/helpers/"
+          ],
+          [
+            "pages",
+            "./src/js/pages/"
+          ],
+          [
+            "routes",
+            "./src/js/routes/"
+          ]
+        ],
+        "extensions": [
+          ".js"
+        ]
+      }
+    }
+  },
   "rules": {
     "react/jsx-filename-extension": [
       1,

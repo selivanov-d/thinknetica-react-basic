@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardBody,
@@ -8,9 +9,10 @@ import {
 } from 'reactstrap';
 import cn from 'classnames';
 
-import Price from './ProductCardPrice';
-import ProductCardImage from './ProductCardImage';
-import AddToCartButton from './AddToCartButton';
+import { catalogItemPagePath } from 'helpers/pathes';
+import ProductCartPrice from 'components/ProductCard/ProductCardPrice';
+import ProductCardImage from 'components/ProductCard/ProductCardImage';
+import AddToCartButton from 'components/ProductCard/AddToCartButton';
 
 class ProductCard extends Component {
   onDragStart = (event, product) => {
@@ -20,11 +22,12 @@ class ProductCard extends Component {
   render() {
     const {
       product: {
+        id,
         title,
         price,
         imageUrl,
         imageAlt = title,
-        description,
+        shortDescription,
       },
     } = this.props;
     const { className, product } = this.props;
@@ -40,9 +43,11 @@ class ProductCard extends Component {
         <ProductCardImage src={imageUrl} alt={imageAlt} />
 
         <CardBody>
-          <CardTitle>{title}</CardTitle>
-          <CardText className="product-card_text">{description}</CardText>
-          <Price value={price} />
+          <CardTitle>
+            <Link to={catalogItemPagePath(id)}>{title}</Link>
+          </CardTitle>
+          <CardText className="product-card_text">{shortDescription}</CardText>
+          <ProductCartPrice value={price} />
           <AddToCartButton cartItemToAdd={product} />
         </CardBody>
       </Card>
@@ -61,7 +66,7 @@ ProductCard.propTypes = {
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     imageUrl: PropTypes.string,
-    description: PropTypes.string,
+    shortDescription: PropTypes.string,
   }).isRequired,
 };
 
