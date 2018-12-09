@@ -14,7 +14,7 @@ class CartItemControl extends Component {
   static contextType = CartContext;
 
   render() {
-    const { item: { id: itemId, quantity: itemQuantity }, className } = this.props;
+    const { item: { product, quantity: itemQuantity }, className } = this.props;
     const { changeItemQuantityInCart } = this.context;
 
     return (
@@ -23,7 +23,7 @@ class CartItemControl extends Component {
           <Button
             block
             color="primary"
-            onClick={() => changeItemQuantityInCart(itemId, -1)}
+            onClick={() => changeItemQuantityInCart(product, -1)}
             className="cart-item_control-button"
           >
             -
@@ -40,7 +40,7 @@ class CartItemControl extends Component {
           <Button
             block
             color="primary"
-            onClick={() => changeItemQuantityInCart(itemId, 1)}
+            onClick={() => changeItemQuantityInCart(product, 1)}
             className="cart-item_control-button"
           >
             +
@@ -57,7 +57,7 @@ CartItemControl.defaultProps = {
 
 CartItemControl.propTypes = {
   item: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    product: PropTypes.shape().isRequired,
     quantity: PropTypes.number.isRequired,
   }).isRequired,
   className: PropTypes.string,

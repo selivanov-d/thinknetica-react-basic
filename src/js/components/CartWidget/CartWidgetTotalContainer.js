@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import CartWidgetTotal from 'components/CartWidget/CartWidgetTotal';
 
 const CartWidgetTotalContainer = ({ items }) => {
-  const totalPrice = items.reduce((total, item) => (total + item.price * item.quantity), 0);
+  const totalPrice = items.reduce((total, item) => total + item.product.price * item.quantity, 0);
 
   return (
     <CartWidgetTotal totalRaw={totalPrice} />
@@ -13,7 +13,9 @@ const CartWidgetTotalContainer = ({ items }) => {
 
 CartWidgetTotalContainer.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
-    price: PropTypes.number.isRequired,
+    product: PropTypes.shape({
+      price: PropTypes.number.isRequired,
+    }).isRequired,
     quantity: PropTypes.number.isRequired,
   })).isRequired,
 };

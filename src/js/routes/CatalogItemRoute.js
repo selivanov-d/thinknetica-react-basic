@@ -1,10 +1,10 @@
-import CatalogItemPage from 'pages/CatalogItemPage';
+import CatalogItemPageContainer from 'pages/CatalogItemPageContainer';
 import { catalogItemPagePath } from 'helpers/pathes';
 
 const CatalogItemPageRoute = {
-  component: CatalogItemPage,
+  component: CatalogItemPageContainer,
   path: catalogItemPagePath(),
-  exact: true,
+  exact: false,
 };
 
 export default CatalogItemPageRoute;

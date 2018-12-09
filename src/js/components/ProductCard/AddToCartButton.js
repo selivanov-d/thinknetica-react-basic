@@ -21,7 +21,7 @@ class AddToCartButton extends Component {
   };
 
   render() {
-    const { cartItemToAdd } = this.props;
+    const { product } = this.props;
     const { quantity } = this.state;
     const { changeItemQuantityInCart } = this.context;
 
@@ -31,7 +31,7 @@ class AddToCartButton extends Component {
           <Button
             block
             color="primary"
-            onClick={() => changeItemQuantityInCart(cartItemToAdd.id, quantity)}
+            onClick={() => changeItemQuantityInCart(product, quantity)}
           >
             Купить
           </Button>
@@ -49,8 +49,8 @@ class AddToCartButton extends Component {
 }
 
 AddToCartButton.propTypes = {
-  cartItemToAdd: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+  product: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired,

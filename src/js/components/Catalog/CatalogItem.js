@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Image from 'components/utilities/Image';
+import CatalogItemGalleryContainer from 'components/CatalogItemGallery/CatalogItemGalleryContainer';
 
-const CatalogItem = ({ product: { title, imageUrl, longDescription } }) => (
+const CatalogItem = ({ product: { title, gallery, longDescription } }) => (
   <div className="catalog-item">
     <div className="catalog-item_wrapper">
-      <Image src={imageUrl} alt={title} className="catalog-item_image" />
+      <CatalogItemGalleryContainer images={gallery} title={title} />
     </div>
     <p className="catalog-item_description">{longDescription}</p>
   </div>
@@ -16,7 +16,7 @@ CatalogItem.propTypes = {
   product: PropTypes.shape({
     title: PropTypes.string.isRequired,
     longDescription: PropTypes.string,
-    imageUrl: PropTypes.string,
+    gallery: PropTypes.arrayOf(PropTypes.shape()),
   }).isRequired,
 };
 

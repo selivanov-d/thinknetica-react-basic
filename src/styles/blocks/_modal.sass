@@ -1,0 +1,58 @@
+.modal
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background-color: rgba(0, 0, 0, .85)
+  display: flex
+  align-self: stretch
+  justify-content: stretch
+
+.modal_close
+  position: absolute
+  top: 20px
+  right: 35px
+  +strip-button-styles
+  line-height: 1em
+  font-size: 40px
+  color: #fff
+
+.modal_body
+  padding: 20px
+  text-align: center
+  display: flex
+  flex-direction: column
+  align-self: center
+  justify-content: center
+  width: 100%
+  height: 100%
+
+.modal_image
+  width: 100%
+  height: 100%
+  object-fit: contain
+
+.modal_controls
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  pointer-events: none
+
+.modal_control
+  position: absolute
+  top: 50%
+  margin-top: -20px
+  pointer-events: all
+  +strip-button-styles
+  line-height: 1em
+  font-size: 40px
+  color: #fff
+
+  &.-prev
+    left: 35px
+
+  &.-next
+    right: 35px

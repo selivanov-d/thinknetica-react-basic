@@ -48,7 +48,7 @@ class ProductCard extends Component {
           </CardTitle>
           <CardText className="product-card_text">{shortDescription}</CardText>
           <ProductCartPrice value={price} />
-          <AddToCartButton cartItemToAdd={product} />
+          <AddToCartButton product={product} />
         </CardBody>
       </Card>
     );
@@ -62,7 +62,7 @@ ProductCard.defaultProps = {
 ProductCard.propTypes = {
   className: PropTypes.string,
   product: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     imageUrl: PropTypes.string,

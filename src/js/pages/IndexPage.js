@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 import { UncontrolledAlert } from 'reactstrap';
 import get from 'lodash/get';
 
-import products from 'constants/products';
-
 import { indexPagePath } from 'helpers/pathes';
-import CatalogItems from 'components/Catalog/CatalogItems';
-import CartWidgetContainer from 'components/CartWidget/CartWidgetContainer';
+import CatalogItemsContainer from 'components/Catalog/CatalogItemsContainer';
 
 class IndexPage extends Component {
   state = {
@@ -43,12 +40,7 @@ class IndexPage extends Component {
 
         <main className="page -catalog">
           <h1 className="page_title">Страница каталога</h1>
-          {
-            products.length > 0 && (
-              <CatalogItems products={products} />
-            )
-          }
-          <CartWidgetContainer />
+          <CatalogItemsContainer />
         </main>
       </>
     );

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import CartWidgetItem from 'components/CartWidget/CartWidgetItem';
 import CurrencyFormatter from 'components/utilities/CurrencyFormatter';
 
-const CartWidgetItemContainer = ({ item: { title, quantity, price } }) => (
+const CartWidgetItemContainer = ({ product: { title, price }, quantity }) => (
   <CartWidgetItem>
     <>
       {`${title} x ${quantity} = `}
@@ -14,11 +14,11 @@ const CartWidgetItemContainer = ({ item: { title, quantity, price } }) => (
 );
 
 CartWidgetItemContainer.propTypes = {
-  item: PropTypes.shape({
+  product: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    quantity: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired,
+  quantity: PropTypes.number.isRequired,
 };
 
 export default CartWidgetItemContainer;

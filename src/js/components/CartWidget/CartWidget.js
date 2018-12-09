@@ -23,7 +23,7 @@ class CartWidget extends Component {
     const { changeItemQuantityInCart } = this.context;
     const productToAdd = JSON.parse(event.dataTransfer.getData('text'));
 
-    changeItemQuantityInCart(productToAdd.id, 1);
+    changeItemQuantityInCart(productToAdd, 1);
     this.toggleDropState();
   };
 
@@ -60,14 +60,15 @@ class CartWidget extends Component {
               <div className="cart-widget_items">
                 {
                   items.map(item => (
-                    <CartWidgetItemContainer item={item} key={item.id} />
+                    <CartWidgetItemContainer
+                      product={item.product}
+                      quantity={item.quantity}
+                      key={item.product.id}
+                    />
                   ))
                 }
-                {
-                  items.length > 0 && (
-                    <CartWidgetTotalContainer items={items} />
-                  )
-                }
+
+                <CartWidgetTotalContainer items={items} />
               </div>
             )
           }
