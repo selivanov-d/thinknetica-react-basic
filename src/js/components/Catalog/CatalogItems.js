@@ -23,11 +23,7 @@ const CatalogItems = ({ products }) => (
 
 CatalogItems.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    imageUrl: PropTypes.string,
-    shortDescription: PropTypes.string,
+    id: PropTypes.string.isRequired,
   })).isRequired,
 };
 

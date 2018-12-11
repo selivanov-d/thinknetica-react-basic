@@ -2,9 +2,9 @@ import React from 'react';
 
 import CartWidget from 'components/CartWidget/CartWidget';
 
-const CartWidgetContainer = () => (
+const CartWidgetContainer = props => (
   <aside className="cart-widget">
-    <CartWidget />
+    <CartWidget {...props} />
   </aside>
 );
 

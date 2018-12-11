@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import products from 'constants/products';
 import CartContext from 'contexts/CartContext';
 
 class CartContainer extends Component {
@@ -14,19 +13,19 @@ class CartContainer extends Component {
     return cart.length <= 0;
   }
 
-  changeItemQuantityInCart = (itemId, quantity) => {
+  changeItemQuantityInCart = (product, quantity) => {
     this.setState((state) => {
       const { cart } = state;
 
       if (this.cartIsEmpty) {
-        this.addItemToCart(itemId, quantity);
+        this.addItemToCart(product, quantity);
       } else {
-        const itemInCart = cart.some(cartItem => cartItem.id === itemId);
+        const itemInCart = cart.some(cartItem => cartItem.product.id === product.id);
 
         if (itemInCart) {
-          this.updateItemQuantityInCart(itemId, quantity);
+          this.updateItemQuantityInCart(product, quantity);
         } else {
-          this.addItemToCart(itemId, quantity);
+          this.addItemToCart(product, quantity);
         }
       }
 
@@ -36,17 +35,16 @@ class CartContainer extends Component {
     });
   };
 
-  addItemToCart(itemId, quantity) {
+  addItemToCart(product, quantity) {
     const { cart } = this.state;
-    const newProduct = products.find(item => item.id === itemId);
 
-    cart.push({ ...newProduct, quantity });
+    cart.push({ product, quantity });
   }
 
-  removeItemFromCart(itemId) {
+  removeItemFromCart(product) {
     this.setState((state) => {
       const { cart } = state;
-      const newCart = cart.filter(item => item.id !== itemId);
+      const newCart = cart.filter(cartItem => cartItem.product.id !== product.id);
 
       return {
         cart: newCart,
@@ -54,15 +52,15 @@ class CartContainer extends Component {
     });
   }
 
-  updateItemQuantityInCart(itemId, quantity) {
+  updateItemQuantityInCart(product, quantity) {
     const { cart } = this.state;
 
-    const updatedItemIndex = cart.findIndex(item => item.id === itemId);
+    const updatedItemIndex = cart.findIndex(cartItem => cartItem.product.id === product.id);
     const updatedItem = cart[updatedItemIndex];
     const newQuantity = updatedItem.quantity + quantity;
 
     if (newQuantity <= 0) {
-      this.removeItemFromCart(itemId);
+      this.removeItemFromCart(product);
     } else {
       updatedItem.quantity = newQuantity;
     }

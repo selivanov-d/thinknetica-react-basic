@@ -5,7 +5,7 @@ import CartTotal from 'components/Cart/CartTotal';
 import CurrencyFormatter from 'components/utilities/CurrencyFormatter';
 
 const CartTotalContainer = ({ items }) => {
-  const totalPrice = items.reduce((total, item) => (total + item.price * item.quantity), 0);
+  const totalPrice = items.reduce((total, item) => (total + item.product.price * item.quantity), 0);
 
   return (
     <CartTotal>
@@ -20,7 +20,9 @@ CartTotalContainer.defaultProps = {
 
 CartTotalContainer.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
-    price: PropTypes.number.isRequired,
+    product: PropTypes.shape({
+      price: PropTypes.number.isRequired,
+    }).isRequired,
     quantity: PropTypes.number.isRequired,
   })),
 };

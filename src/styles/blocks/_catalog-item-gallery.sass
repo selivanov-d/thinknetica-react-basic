@@ -1,0 +1,60 @@
+.catalog-item-gallery_small-images
+  display: flex
+  justify-content: space-between
+  margin-top: 20px
+
+.catalog-item-gallery_small-image-wrapper
+  +strip-button-styles
+  border-radius: 4px
+  overflow: hidden
+
+  &.-active
+    box-shadow: 0 0 2px 0 #000
+
+.catalog-item-gallery_small-image
+  width: 100px
+  height: 80px
+  object-fit: cover
+
+.catalog-item-gallery_stage-wrapper
+  position: relative
+
+.catalog-item-gallery_big-image
+  border-radius: 4px
+  overflow: hidden
+
+.catalog-item-gallery_modal-trigger
+  +strip-button-styles
+  position: absolute
+  top: 20px
+  right: 20px
+  font-size: 30px
+  line-height: 1em
+  color: #fff
+
+.catalog-item-gallery_controls
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  pointer-events: none
+
+.catalog-item-gallery_control
+  +strip-button-styles
+  position: absolute
+  top: 50%
+  margin-top: -20px
+  pointer-events: all
+  font-size: 40px
+  line-height: 1em
+  color: #fff
+
+  &.-prev
+    left: 20px
+
+  &.-next
+    right: 20px
+
+  &[disabled]
+    opacity: .3
