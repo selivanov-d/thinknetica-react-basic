@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import { cartPagePath } from 'helpers/pathes';
-import CartContext from 'contexts/CartContext';
 import CartWidgetEmpty from 'components/CartWidget/CartWidgetEmpty';
 import CartWidgetItemContainer from 'components/CartWidget/CartWidgetItemContainer';
 import CartWidgetTotalContainer from 'components/CartWidget/CartWidgetTotalContainer';
+import CartItemPropTypes from 'proptypes/cart-item';
 
 class CartWidget extends Component {
-  static contextType = CartContext;
-
   state = {
     dropReady: false,
   };
@@ -20,7 +19,7 @@ class CartWidget extends Component {
   };
 
   onDrop = (event) => {
-    const { changeItemQuantityInCart } = this.context;
+    const { changeItemQuantityInCart } = this.props;
     const productToAdd = JSON.parse(event.dataTransfer.getData('text'));
 
     changeItemQuantityInCart(productToAdd, 1);
@@ -41,7 +40,7 @@ class CartWidget extends Component {
 
   render() {
     const { dropReady } = this.state;
-    const { itemsInCart: items } = this.context;
+    const { items } = this.props;
 
     return (
       <div
@@ -79,5 +78,10 @@ class CartWidget extends Component {
     );
   }
 }
+
+CartWidget.propTypes = {
+  items: PropTypes.arrayOf(CartItemPropTypes).isRequired,
+  changeItemQuantityInCart: PropTypes.func.isRequired,
+};
 
 export default CartWidget;

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import ProductPropTypes from 'proptypes/product';
 import CartWidgetItem from 'components/CartWidget/CartWidgetItem';
 import CurrencyFormatter from 'components/utilities/CurrencyFormatter';
 
@@ -14,10 +15,7 @@ const CartWidgetItemContainer = ({ product: { title, price }, quantity }) => (
 );
 
 CartWidgetItemContainer.propTypes = {
-  product: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-  }).isRequired,
+  product: ProductPropTypes.isRequired,
   quantity: PropTypes.number.isRequired,
 };
 

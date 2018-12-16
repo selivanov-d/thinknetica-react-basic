@@ -1,57 +1,46 @@
 import React, { Component } from 'react';
-import { createClient } from 'contentful';
-import get from 'lodash/get';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
+import fetchProducts from 'thunks/catalog';
+import ProductPropTypes from 'proptypes/product';
 import CatalogItems from 'components/Catalog/CatalogItems';
-import contentfulConfig from 'constants/contentful';
 import CartWidgetContainer from 'components/CartWidget/CartWidgetContainer';
 
 class CatalogItemsContainer extends Component {
-  state = {
-    products: [],
-  };
-
   componentWillMount() {
-    const client = createClient({
-      space: contentfulConfig.spaceId,
-      accessToken: contentfulConfig.accessToken,
-    });
-
-    client
-      .getEntries({
-        content_type: contentfulConfig.catalogItemType,
-        select: contentfulConfig.catalogItemFields,
-      })
-      .then((entries) => {
-        const productsFields = this.getProductsFields(entries.items);
-
-        this.setState({ products: productsFields });
-      });
+    const { loadProducts } = this.props;
+    loadProducts();
   }
 
-  getProductsFields = entries => (
-    entries.reduce((result, item) => {
-      const newItem = item.fields;
-
-      newItem.id = get(item, 'sys.id');
-      newItem.imageUrl = get(item, 'fields.gallery[0].fields.file.url');
-
-      result.push(newItem);
-      return result;
-    }, [])
-  );
-
   render() {
-    const { products } = this.state;
+    const { products } = this.props;
 
     return (
       <>
         <CatalogItems products={products} />
-        <CartWidgetContainer products={products} />
+        <CartWidgetContainer />
       </>
     );
   }
 }
 
+CatalogItemsContainer.propTypes = {
+  loadProducts: PropTypes.func.isRequired,
+  products: PropTypes.arrayOf(ProductPropTypes).isRequired,
+};
 
-export default CatalogItemsContainer;
+const mapStateToProps = state => ({
+  products: state.catalog.products,
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadProducts() {
+    dispatch(fetchProducts());
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CatalogItemsContainer);

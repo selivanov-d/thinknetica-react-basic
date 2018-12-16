@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import CartItemPropTypes from 'proptypes/cart-item';
 import CartWidgetTotal from 'components/CartWidget/CartWidgetTotal';
 
 const CartWidgetTotalContainer = ({ items }) => {
@@ -12,12 +13,7 @@ const CartWidgetTotalContainer = ({ items }) => {
 };
 
 CartWidgetTotalContainer.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
-    product: PropTypes.shape({
-      price: PropTypes.number.isRequired,
-    }).isRequired,
-    quantity: PropTypes.number.isRequired,
-  })).isRequired,
+  items: PropTypes.arrayOf(CartItemPropTypes).isRequired,
 };
 
 export default CartWidgetTotalContainer;

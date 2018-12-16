@@ -37,6 +37,22 @@
           [
             "routes",
             "./src/js/routes/"
+          ],
+          [
+            "reducers",
+            "./src/js/reducers/"
+          ],
+          [
+            "actions",
+            "./src/js/actions/"
+          ],
+          [
+            "proptypes",
+            "./src/js/proptypes/"
+          ],
+          [
+            "thunks",
+            "./src/js/thunks/"
           ]
         ],
         "extensions": [

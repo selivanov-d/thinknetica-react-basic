@@ -1,54 +1,52 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  InputGroup,
-  InputGroupAddon,
   Button,
   Input,
+  InputGroup,
+  InputGroupAddon,
 } from 'reactstrap';
 import cn from 'classnames';
 
-import CartContext from 'contexts/CartContext';
+import updateProductInCart from 'actions/cart';
 
-class CartItemControl extends Component {
-  static contextType = CartContext;
+function CartItemControl(props) {
+  const { item: { product, quantity: itemQuantity }, className } = props;
 
-  render() {
-    const { item: { product, quantity: itemQuantity }, className } = this.props;
-    const { changeItemQuantityInCart } = this.context;
+  const { changeItemQuantityInCart } = props;
 
-    return (
-      <InputGroup className={cn('cart-item_control', className)}>
-        <InputGroupAddon addonType="prepend" className="cart-item_control-addon -prepend">
-          <Button
-            block
-            color="primary"
-            onClick={() => changeItemQuantityInCart(product, -1)}
-            className="cart-item_control-button"
-          >
-            -
-          </Button>
-        </InputGroupAddon>
-        <Input
-          type="number"
-          min="1"
-          readOnly
-          value={itemQuantity}
-          className="cart-item_control-input"
-        />
-        <InputGroupAddon addonType="append" className="cart-item_control-addon -append">
-          <Button
-            block
-            color="primary"
-            onClick={() => changeItemQuantityInCart(product, 1)}
-            className="cart-item_control-button"
-          >
-            +
-          </Button>
-        </InputGroupAddon>
-      </InputGroup>
-    );
-  }
+  return (
+    <InputGroup className={cn('cart-item_control', className)}>
+      <InputGroupAddon addonType="prepend" className="cart-item_control-addon -prepend">
+        <Button
+          block
+          color="primary"
+          onClick={() => changeItemQuantityInCart(product, -1)}
+          className="cart-item_control-button"
+        >
+          -
+        </Button>
+      </InputGroupAddon>
+      <Input
+        type="number"
+        min="1"
+        readOnly
+        value={itemQuantity}
+        className="cart-item_control-input"
+      />
+      <InputGroupAddon addonType="append" className="cart-item_control-addon -append">
+        <Button
+          block
+          color="primary"
+          onClick={() => changeItemQuantityInCart(product, 1)}
+          className="cart-item_control-button"
+        >
+          +
+        </Button>
+      </InputGroupAddon>
+    </InputGroup>
+  );
 }
 
 CartItemControl.defaultProps = {
@@ -61,6 +59,20 @@ CartItemControl.propTypes = {
     quantity: PropTypes.number.isRequired,
   }).isRequired,
   className: PropTypes.string,
+  changeItemQuantityInCart: PropTypes.func.isRequired,
 };
 
-export default CartItemControl;
+const mapStateToProps = state => ({
+  cart: state.cart,
+});
+
+const mapDispatchToProps = dispatch => ({
+  changeItemQuantityInCart(product, quantity) {
+    dispatch(updateProductInCart(product, quantity));
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(CartItemControl);

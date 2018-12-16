@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
+import ProductPropTypes from 'proptypes/cart-item';
 import CatalogItem from 'components/Catalog/CatalogItem';
 
 const CatalogItemPage = ({ product }) => (
@@ -11,15 +11,7 @@ const CatalogItemPage = ({ product }) => (
 );
 
 CatalogItemPage.propTypes = {
-  product: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    longDescription: PropTypes.string.isRequired,
-    gallery: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      imageUrl: PropTypes.string.isRequired,
-    })),
-  }).isRequired,
+  product: ProductPropTypes.isRequired,
 };
 
 export default CatalogItemPage;

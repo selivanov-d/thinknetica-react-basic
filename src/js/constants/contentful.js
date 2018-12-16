@@ -4,7 +4,6 @@ export default {
   catalogItemType: 'catalogItem',
   catalogItemFields: [
     'sys.id',
-    'fields.id',
     'fields.title',
     'fields.price',
     'fields.shortDescription',
