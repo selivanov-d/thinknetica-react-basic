@@ -1,28 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import CartContext from 'contexts/CartContext';
 import CartItem from 'components/Cart/CartItem';
 import CartTotalContainer from 'components/Cart/CartTotalContainer';
+import CartItemPropTypes from 'proptypes/cart-item';
 
-class Cart extends Component {
-  static contextType = CartContext;
+const Cart = ({ items }) => (
+  <div className="cart">
+    <div className="cart_items">
+      {
+        items.map(item => (
+          <CartItem item={item} key={item.product.id} />
+        ))
+      }
+    </div>
+    <CartTotalContainer items={items} />
+  </div>
+);
 
-  render() {
-    const { itemsInCart: items } = this.context;
-
-    return (
-      <div className="cart">
-        <div className="cart_items">
-          {
-            items.map(item => (
-              <CartItem item={item} key={item.product.id} />
-            ))
-          }
-        </div>
-        <CartTotalContainer items={items} />
-      </div>
-    );
-  }
-}
+Cart.propTypes = {
+  items: PropTypes.arrayOf(CartItemPropTypes).isRequired,
+};
 
 export default Cart;

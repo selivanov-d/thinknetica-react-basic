@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import CatalogItemGallerySecondaryItem from 'components/CatalogItemGallery/CatalogItemGallerySecondaryItem';
 import GalleryContext from 'contexts/GalleryContext';
+import GalleryItemPropTypes from 'proptypes/gallery-item';
 
 class CatalogItemGallerySecondaryItems extends Component {
   static contextType = GalleryContext;
@@ -34,11 +35,7 @@ class CatalogItemGallerySecondaryItems extends Component {
 }
 
 CatalogItemGallerySecondaryItems.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    title: PropTypes.string,
-  })).isRequired,
+  images: PropTypes.arrayOf(GalleryItemPropTypes).isRequired,
 };
 
 export default CatalogItemGallerySecondaryItems;

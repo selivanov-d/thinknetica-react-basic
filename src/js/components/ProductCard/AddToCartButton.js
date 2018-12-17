@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import connect from 'react-redux/es/connect/connect';
 import {
   Button,
   Input,
@@ -7,11 +8,10 @@ import {
   InputGroupAddon,
 } from 'reactstrap';
 
-import CartContext from 'contexts/CartContext';
+import updateProductInCart from 'actions/cart';
+import ProductPropTypes from 'proptypes/product';
 
 class AddToCartButton extends Component {
-  static contextType = CartContext;
-
   state = {
     quantity: 1,
   };
@@ -23,7 +23,7 @@ class AddToCartButton extends Component {
   render() {
     const { product } = this.props;
     const { quantity } = this.state;
-    const { changeItemQuantityInCart } = this.context;
+    const { addToCart } = this.props;
 
     return (
       <InputGroup className="add-to-cart-control">
@@ -31,7 +31,7 @@ class AddToCartButton extends Component {
           <Button
             block
             color="primary"
-            onClick={() => changeItemQuantityInCart(product, quantity)}
+            onClick={() => addToCart(product, quantity)}
           >
             Купить
           </Button>
@@ -49,11 +49,21 @@ class AddToCartButton extends Component {
 }
 
 AddToCartButton.propTypes = {
-  product: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-  }).isRequired,
+  addToCart: PropTypes.func.isRequired,
+  product: ProductPropTypes.isRequired,
 };
 
-export default AddToCartButton;
+const mapStateToProps = state => ({
+  cart: state.cart,
+});
+
+const mapDispatchToProps = dispatch => ({
+  addToCart(product, quantity) {
+    dispatch(updateProductInCart(product, quantity));
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AddToCartButton);

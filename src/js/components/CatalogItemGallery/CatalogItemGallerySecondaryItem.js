@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import GalleryItemPropTypes from 'proptypes/gallery-item';
 import GalleryContext from 'contexts/GalleryContext';
 import Image from 'components/utilities/Image';
 
@@ -39,11 +40,7 @@ CatalogItemGallerySecondaryItem.defaultProps = {
 };
 
 CatalogItemGallerySecondaryItem.propTypes = {
-  image: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    title: PropTypes.string,
-  }).isRequired,
+  image: GalleryItemPropTypes.isRequired,
   index: PropTypes.number.isRequired,
   active: PropTypes.bool,
 };

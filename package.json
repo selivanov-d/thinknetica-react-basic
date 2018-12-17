@@ -1,6 +1,6 @@
 {
   "name": "thinknetica-react-basic",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React-based training project made for Thinknetica",
   "author": "Dmitrii Selivanov",
   "license": "MIT",
@@ -34,10 +34,13 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
     "react-router-config": "^4.4.0-beta.6",
     "react-router-dom": "^4.3.1",
-    "reactstrap": "^6.5.0"
+    "reactstrap": "^6.5.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "alias": {
     "components": "./src/js/components/",
@@ -45,7 +48,11 @@
     "contexts": "./src/js/contexts",
     "helpers": "./src/js/helpers",
     "pages": "./src/js/pages",
-    "routes": "./src/js/routes"
+    "routes": "./src/js/routes",
+    "reducers": "./src/js/reducers",
+    "actions": "./src/js/actions",
+    "proptypes": "./src/js/proptypes",
+    "thunks": "./src/js/thunks"
   },
   "scripts": {
     "start": "parcel index.html",

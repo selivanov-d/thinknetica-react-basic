@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 
+import ProductPropTypes from 'proptypes/product';
 import ProductCard from 'components/ProductCard/ProductCard';
 
 const CatalogItems = ({ products }) => (
@@ -22,9 +23,7 @@ const CatalogItems = ({ products }) => (
 );
 
 CatalogItems.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  })).isRequired,
+  products: PropTypes.arrayOf(ProductPropTypes).isRequired,
 };
 
 export default CatalogItems;

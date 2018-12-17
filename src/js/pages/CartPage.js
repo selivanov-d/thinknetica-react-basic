@@ -1,33 +1,41 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { indexPagePath } from 'helpers/pathes';
 import Cart from 'components/Cart/Cart';
-import CartContext from 'contexts/CartContext';
+import CartItemPropTypes from 'proptypes/cart-item';
 
-class CartPage extends Component {
-  static contextType = CartContext;
+const CartPage = ({ cart: items }) => (
+  <main className="page -cart">
+    <h1 className="page_title">Корзина</h1>
+    {
+      items.length > 0
+        ? <Cart items={items} />
+        : (
+          <Redirect to={{
+            pathname: indexPagePath(),
+            state: { redirectReason: 'Корзина пуста' },
+          }}
+          />
+        )
+    }
+  </main>
+);
 
-  render() {
-    const { itemsInCart } = this.context;
+CartPage.defaultProps = {
+  cart: [],
+};
 
-    return (
-      <main className="page -cart">
-        <h1 className="page_title">Корзина</h1>
-        {
-          itemsInCart.length > 0
-            ? <Cart />
-            : (
-              <Redirect to={{
-                pathname: indexPagePath(),
-                state: { redirectReason: 'Корзина пуста' },
-              }}
-              />
-            )
-        }
-      </main>
-    );
-  }
-}
+CartPage.propTypes = {
+  cart: PropTypes.arrayOf(CartItemPropTypes),
+};
 
-export default CartPage;
+const mapStateToProps = state => ({
+  cart: state.cart,
+});
+
+export default connect(
+  mapStateToProps,
+)(CartPage);

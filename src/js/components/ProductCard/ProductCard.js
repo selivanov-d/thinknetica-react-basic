@@ -8,8 +8,10 @@ import {
   CardText,
 } from 'reactstrap';
 import cn from 'classnames';
+import get from 'lodash/get';
 
 import { catalogItemPagePath } from 'helpers/pathes';
+import ProductPropTypes from 'proptypes/product';
 import ProductCartPrice from 'components/ProductCard/ProductCardPrice';
 import ProductCardImage from 'components/ProductCard/ProductCardImage';
 import AddToCartButton from 'components/ProductCard/AddToCartButton';
@@ -20,17 +22,15 @@ class ProductCard extends Component {
   };
 
   render() {
+    const { product, className } = this.props;
     const {
-      product: {
-        id,
-        title,
-        price,
-        imageUrl,
-        imageAlt = title,
-        shortDescription,
-      },
-    } = this.props;
-    const { className, product } = this.props;
+      id,
+      title,
+      price,
+      gallery,
+      imageAlt = title,
+      shortDescription,
+    } = product;
 
     return (
       <Card
@@ -40,7 +40,7 @@ class ProductCard extends Component {
           this.onDragStart(event, product);
         }}
       >
-        <ProductCardImage src={imageUrl} alt={imageAlt} />
+        <ProductCardImage src={get(gallery, '[0].imageUrl')} alt={imageAlt} />
 
         <CardBody>
           <CardTitle>
@@ -61,13 +61,7 @@ ProductCard.defaultProps = {
 
 ProductCard.propTypes = {
   className: PropTypes.string,
-  product: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    imageUrl: PropTypes.string,
-    shortDescription: PropTypes.string,
-  }).isRequired,
+  product: ProductPropTypes.isRequired,
 };
 
 export default ProductCard;
