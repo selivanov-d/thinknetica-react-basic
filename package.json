@@ -27,11 +27,13 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
     "@fortawesome/react-fontawesome": "^0.1.3",
+    "axios": "^0.18.0",
     "bootstrap": "4.1.3",
     "classnames": "^2.2.6",
     "contentful": "^7.0.5",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
+    "qs": "^6.6.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-redux": "^6.0.0",
@@ -39,8 +41,7 @@
     "react-router-config": "^4.4.0-beta.6",
     "react-router-dom": "^4.3.1",
     "reactstrap": "^6.5.0",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux": "^4.0.1"
   },
   "alias": {
     "components": "./src/js/components/",
@@ -52,7 +53,7 @@
     "reducers": "./src/js/reducers",
     "actions": "./src/js/actions",
     "proptypes": "./src/js/proptypes",
-    "thunks": "./src/js/thunks"
+    "middleware": "./src/js/middleware"
   },
   "scripts": {
     "start": "parcel index.html",

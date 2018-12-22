@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import CatalogItemPage from 'pages/CatalogItemPage';
-import fetchProducts from 'thunks/catalog';
+import fetchProduct from 'actions/product';
 import ProductPropTypes from 'proptypes/product';
 
 class CatalogItemPageContainer extends Component {
   componentWillMount() {
-    const { loadProducts } = this.props;
-    loadProducts();
+    const { product, loadProduct } = this.props;
+
+    if (!product) loadProduct();
   }
 
   render() {
@@ -31,7 +32,7 @@ CatalogItemPageContainer.propTypes = {
       id: PropTypes.string,
     }),
   }).isRequired,
-  loadProducts: PropTypes.func.isRequired,
+  loadProduct: PropTypes.func.isRequired,
   product: ProductPropTypes,
 };
 
@@ -44,11 +45,15 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  loadProducts() {
-    dispatch(fetchProducts());
-  },
-});
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { id: pageId } = ownProps.match.params;
+
+  return ({
+    loadProduct() {
+      dispatch(fetchProduct(pageId));
+    },
+  });
+};
 
 export default connect(
   mapStateToProps,

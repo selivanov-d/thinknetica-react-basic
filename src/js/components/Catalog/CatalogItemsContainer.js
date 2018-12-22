@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import fetchProducts from 'thunks/catalog';
+import fetchProducts from 'actions/products';
 import ProductPropTypes from 'proptypes/product';
 import CatalogItems from 'components/Catalog/CatalogItems';
 import CartWidgetContainer from 'components/CartWidget/CartWidgetContainer';

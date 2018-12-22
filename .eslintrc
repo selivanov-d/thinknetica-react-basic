@@ -51,8 +51,8 @@
             "./src/js/proptypes/"
           ],
           [
-            "thunks",
-            "./src/js/thunks/"
+            "middleware",
+            "./src/js/middleware/"
           ]
         ],
         "extensions": [
