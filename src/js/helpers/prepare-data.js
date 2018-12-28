@@ -3,7 +3,7 @@ import { compact } from 'lodash/array';
 import { map } from 'lodash/collection';
 
 export default (store, { location, params, routes }) => {
-  const query = parse(location.search.substr(1));
+  const query = parse(location.search, { ignoreQueryPrefix: true });
 
   const prepareDataFns = compact(map(routes, route => route.prepareData));
 

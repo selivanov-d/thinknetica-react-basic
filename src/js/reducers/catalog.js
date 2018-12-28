@@ -5,7 +5,7 @@ import {
   FETCH_PRODUCT_REQUEST,
   FETCH_PRODUCT_SUCCESS,
   FETCH_PRODUCT_FAILURE,
-} from 'constants/catalog-action-types';
+} from 'constants/action-types/catalog';
 
 import processProductsResponse from 'helpers/process-products-response';
 

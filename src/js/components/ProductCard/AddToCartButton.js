@@ -8,7 +8,7 @@ import {
   InputGroupAddon,
 } from 'reactstrap';
 
-import updateProductInCart from 'actions/cart';
+import { updateProductInCart } from 'actions/cart';
 import ProductPropTypes from 'proptypes/product';
 
 class AddToCartButton extends Component {
@@ -21,9 +21,8 @@ class AddToCartButton extends Component {
   };
 
   render() {
-    const { product } = this.props;
+    const { product, addToCart } = this.props;
     const { quantity } = this.state;
-    const { addToCart } = this.props;
 
     return (
       <InputGroup className="add-to-cart-control">

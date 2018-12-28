@@ -1,36 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import CartItemPropTypes from 'proptypes/cart-item';
 import CartWidget from 'components/CartWidget/CartWidget';
-import updateProductInCart from 'actions/cart';
+import { updateProductInCart, loadCart } from 'actions/cart';
 
-const CartWidgetContainer = ({ cart, changeItemQuantityInCart }) => (
-  <aside className="cart-widget">
-    <CartWidget
-      items={cart}
-      changeItemQuantityInCart={changeItemQuantityInCart}
-    />
-  </aside>
-);
+class CartWidgetContainer extends Component {
+  componentDidMount() {
+    const { loadCartContent } = this.props;
+    loadCartContent();
+  }
+
+  render() {
+    const { items, changeItemQuantityInCart } = this.props;
+    return (
+      <aside className="cart-widget">
+        <CartWidget
+          items={items}
+          changeItemQuantityInCart={changeItemQuantityInCart}
+        />
+      </aside>
+    );
+  }
+}
 
 CartWidgetContainer.defaultProps = {
-  cart: [],
+  items: [],
 };
 
 CartWidgetContainer.propTypes = {
-  cart: PropTypes.arrayOf(CartItemPropTypes),
+  items: PropTypes.arrayOf(CartItemPropTypes),
   changeItemQuantityInCart: PropTypes.func.isRequired,
+  loadCartContent: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  cart: state.cart,
+  items: state.cart.items,
 });
 
 const mapDispatchToProps = dispatch => ({
   changeItemQuantityInCart(product, quantity) {
     dispatch(updateProductInCart(product, quantity));
+  },
+  loadCartContent() {
+    dispatch(loadCart());
   },
 });
 

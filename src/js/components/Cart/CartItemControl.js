@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 import cn from 'classnames';
 
-import updateProductInCart from 'actions/cart';
+import { updateProductInCart } from 'actions/cart';
 
 function CartItemControl(props) {
   const { item: { product, quantity: itemQuantity }, className } = props;

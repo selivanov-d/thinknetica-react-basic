@@ -45,6 +45,7 @@
     "redux": "^4.0.1"
   },
   "alias": {
+    "root": "./src/js/",
     "components": "./src/js/components/",
     "constants": "./src/js/constants",
     "contexts": "./src/js/contexts",
@@ -57,8 +58,8 @@
     "middleware": "./src/js/middleware"
   },
   "scripts": {
-    "start": "parcel index.html",
-    "dev": "parcel watch index.html",
+    "start": "parcel index.html --no-autoinstall",
+    "dev": "parcel watch index.html --no-autoinstall",
     "lint": "eslint './src/**/*.js'"
   }
 }

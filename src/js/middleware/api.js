@@ -1,6 +1,6 @@
 import request from 'axios';
 
-import API_CALL from 'constants/api';
+import API_CALL from 'constants/action-types/api';
 
 const APICall = (endpoint, method, query) => {
   const options = {

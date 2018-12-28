@@ -2,14 +2,14 @@ import {
   FETCH_PRODUCT_REQUEST,
   FETCH_PRODUCT_SUCCESS,
   FETCH_PRODUCT_FAILURE,
-} from 'constants/catalog-action-types';
-import API_CALL from 'constants/api';
+} from 'constants/action-types/catalog';
 import {
   accessToken,
   contentTypeId,
   spaceId,
   apiBase,
 } from 'constants/contentful';
+import API_CALL from 'constants/action-types/api';
 
 const fetchProduct = productId => ({
   [API_CALL]: {
