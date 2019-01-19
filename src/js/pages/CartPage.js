@@ -6,36 +6,47 @@ import { connect } from 'react-redux';
 import { indexPagePath } from 'helpers/pathes';
 import Cart from 'components/Cart/Cart';
 import CartItemPropTypes from 'proptypes/cart-item';
+import { updateProductInCart } from 'actions/cart';
 
-const CartPage = ({ cart: items }) => (
+const CartPage = ({ items, loaded }) => (
   <main className="page -cart">
     <h1 className="page_title">Корзина</h1>
+
+    {loaded && items.length > 0 && <Cart items={items} />}
+
     {
-      items.length > 0
-        ? <Cart items={items} />
-        : (
-          <Redirect to={{
-            pathname: indexPagePath(),
-            state: { redirectReason: 'Корзина пуста' },
-          }}
-          />
-        )
+      loaded && items.length === 0 && (
+        <Redirect to={{
+          pathname: indexPagePath(),
+          state: { redirectReason: 'Корзина пуста' },
+        }}
+        />
+      )
     }
   </main>
 );
 
 CartPage.defaultProps = {
-  cart: [],
+  items: [],
 };
 
 CartPage.propTypes = {
-  cart: PropTypes.arrayOf(CartItemPropTypes),
+  items: PropTypes.arrayOf(CartItemPropTypes),
+  loaded: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
-  cart: state.cart,
+  items: state.cart.items,
+  loaded: state.cart.loaded,
+});
+
+const mapDispatchToProps = dispatch => ({
+  changeItemQuantityInCart(product, quantity) {
+    dispatch(updateProductInCart(product, quantity));
+  },
 });
 
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(CartPage);

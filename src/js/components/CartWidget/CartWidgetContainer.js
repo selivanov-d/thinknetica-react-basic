@@ -4,28 +4,28 @@ import { connect } from 'react-redux';
 
 import CartItemPropTypes from 'proptypes/cart-item';
 import CartWidget from 'components/CartWidget/CartWidget';
-import updateProductInCart from 'actions/cart';
+import { updateProductInCart } from 'actions/cart';
 
-const CartWidgetContainer = ({ cart, changeItemQuantityInCart }) => (
+const CartWidgetContainer = ({ items, changeItemQuantityInCart }) => (
   <aside className="cart-widget">
     <CartWidget
-      items={cart}
+      items={items}
       changeItemQuantityInCart={changeItemQuantityInCart}
     />
   </aside>
 );
 
 CartWidgetContainer.defaultProps = {
-  cart: [],
+  items: [],
 };
 
 CartWidgetContainer.propTypes = {
-  cart: PropTypes.arrayOf(CartItemPropTypes),
+  items: PropTypes.arrayOf(CartItemPropTypes),
   changeItemQuantityInCart: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  cart: state.cart,
+  items: state.cart.items,
 });
 
 const mapDispatchToProps = dispatch => ({

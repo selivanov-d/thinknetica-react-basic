@@ -1,23 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Router, Switch } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-
-import reducers from 'reducers';
 
 import routes from 'routes';
-import MainMenu from 'components/MainMenu/MainMenu';
+import store from 'root/store';
+import history from 'root/history';
 
-const store = createStore(
-  reducers,
-  applyMiddleware(thunk),
-);
+import MainMenu from 'components/MainMenu/MainMenu';
 
 const App = () => (
   <Provider store={store}>
-    <Router>
+    <Router history={history}>
       <>
         <MainMenu />
 

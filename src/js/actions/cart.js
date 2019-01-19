@@ -1,6 +1,10 @@
-import UPDATE_PRODUCT_IN_CART from 'constants/cart-action-types';
+import {
+  UPDATE_PRODUCT_IN_CART,
+  LOAD_CART,
+  LOADED_CART,
+} from 'constants/action-types/cart';
 
-const updateProductInCart = (product, quantity) => ({
+export const updateProductInCart = (product, quantity) => ({
   type: UPDATE_PRODUCT_IN_CART,
   payload: {
     product,
@@ -8,4 +12,17 @@ const updateProductInCart = (product, quantity) => ({
   },
 });
 
-export default updateProductInCart;
+export const loadCart = () => ({
+  type: LOAD_CART,
+  payload: {
+    loaded: false,
+  },
+});
+
+export const loadedCart = items => ({
+  type: LOADED_CART,
+  payload: {
+    items,
+    loaded: true,
+  },
+});

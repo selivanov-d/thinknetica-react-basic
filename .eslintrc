@@ -15,6 +15,10 @@
       "alias": {
         "map": [
           [
+            "root",
+            "./src/js/"
+          ],
+          [
             "components",
             "./src/js/components/"
           ],
@@ -51,8 +55,8 @@
             "./src/js/proptypes/"
           ],
           [
-            "thunks",
-            "./src/js/thunks/"
+            "middleware",
+            "./src/js/middleware/"
           ]
         ],
         "extensions": [
