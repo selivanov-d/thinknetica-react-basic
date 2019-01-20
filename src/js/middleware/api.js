@@ -2,10 +2,12 @@ import request from 'axios';
 
 import API_CALL from 'constants/action-types/api';
 
-const APICall = (endpoint, method, query) => {
+const APICall = (endpoint, method, headers, query, payload) => {
   const options = {
     method,
+    headers,
     url: endpoint,
+    data: payload,
   };
 
   if (query) options.params = query;
@@ -23,6 +25,7 @@ export default () => next => (action) => {
   const {
     endpoint,
     method,
+    headers,
     query,
     payload,
     types,
@@ -32,7 +35,7 @@ export default () => next => (action) => {
 
   next(nextAction(action, { type: requestType }));
 
-  const promise = APICall(endpoint, method, query, payload);
+  const promise = APICall(endpoint, method, headers, query, payload);
 
   promise
     .then(response => next(

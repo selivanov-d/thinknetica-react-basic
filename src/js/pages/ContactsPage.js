@@ -7,7 +7,12 @@ const ContactsPage = () => (
     <h1 className="page_title">Контакты</h1>
     <div className="page_body">
       <Row>
-        <Col xs="6">
+        <Col xs={6}>
+          <h4>Есть вопросы? Напишите</h4>
+          <ContactsForm />
+        </Col>
+        <Col xs={6}>
+          <h4>Хотите встретиться лично? Приходите</h4>
           <p>
             <b>Адрес:</b>
             {' '}
@@ -18,7 +23,6 @@ const ContactsPage = () => (
             {' '}
             +7 (960) 123-34-45, +7 (960) 567-78-89
           </p>
-          <ContactsForm />
         </Col>
       </Row>
     </div>

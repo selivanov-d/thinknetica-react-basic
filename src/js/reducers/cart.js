@@ -2,6 +2,7 @@ import {
   UPDATE_PRODUCT_IN_CART,
   LOAD_CART,
   LOADED_CART,
+  CLEAR_CART,
 } from 'constants/action-types/cart';
 
 const INITIAL_STATE = { items: [], loaded: false };
@@ -33,6 +34,10 @@ export default (state = INITIAL_STATE, action) => {
     case LOADED_CART: {
       const { items, loaded } = action.payload;
       return Object.assign({}, state, { items, loaded });
+    }
+
+    case CLEAR_CART: {
+      return Object.assign({}, INITIAL_STATE);
     }
 
     default:

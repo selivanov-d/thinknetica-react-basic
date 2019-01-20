@@ -8,40 +8,44 @@ import {
   Col,
 } from 'reactstrap';
 
+import { clearCart } from 'actions/cart';
+import submitOrder from 'actions/order';
 import { FORM_NOT_FILLED } from 'constants/validation-messages';
-import submitContacts from 'actions/contacts';
 import FormInputText from 'components/Form/FormInputText';
 import FormInputEmail from 'components/Form/FormInputEmail';
 import FormInputTextarea from 'components/Form/FormInputTextarea';
 
-const onSubmit = (inputValues) => {
+const onSubmit = (inputValues, dispatch, props) => {
+  const { items } = props;
+
   if (!Object.entries(inputValues).length) {
     throw new SubmissionError({
       _error: FORM_NOT_FILLED,
     });
   } else {
-    return inputValues;
+    return Object.assign({}, inputValues, { items });
   }
 };
 
 const onSubmitSuccess = (dataToSubmit, dispatch, props) => {
   const { reset } = props;
 
-  dispatch(submitContacts(dataToSubmit)).then(() => {
+  dispatch(submitOrder(dataToSubmit)).then(() => {
+    dispatch(clearCart());
     reset('checkout');
   });
 };
 
-const ContactsForm = ({ handleSubmit, error }) => (
+const CartCheckoutForm = ({ handleSubmit, error }) => (
   <Form onSubmit={handleSubmit}>
     <FormInputText name="firstName">Имя</FormInputText>
     <FormInputText name="lastName">Фамилия</FormInputText>
     <FormInputEmail name="email">Email</FormInputEmail>
-    <FormInputTextarea name="message">Комментарий</FormInputTextarea>
+    <FormInputTextarea name="message">Комментарий к заказу</FormInputTextarea>
 
     <Row>
       <Col xs={6}>
-        <Button color="primary" block>Отправить</Button>
+        <Button color="primary" block>Отправить заказ</Button>
       </Col>
       <Col xs={6}>
         {error && <div className="text-danger">{error}</div>}
@@ -50,17 +54,17 @@ const ContactsForm = ({ handleSubmit, error }) => (
   </Form>
 );
 
-ContactsForm.defaultProps = {
+CartCheckoutForm.defaultProps = {
   error: null,
 };
 
-ContactsForm.propTypes = {
+CartCheckoutForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.string,
 };
 
 export default withReduxForm({
-  form: 'contacts',
+  form: 'checkout',
   onSubmit,
   onSubmitSuccess,
-})(ContactsForm);
+})(CartCheckoutForm);

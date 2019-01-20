@@ -2,6 +2,8 @@ import {
   UPDATE_PRODUCT_IN_CART,
   LOAD_CART,
   LOADED_CART,
+  CLEAR_CART,
+  CLEARED_CART,
 } from 'constants/action-types/cart';
 
 export const updateProductInCart = (product, quantity) => ({
@@ -25,4 +27,12 @@ export const loadedCart = items => ({
     items,
     loaded: true,
   },
+});
+
+export const clearCart = () => ({
+  type: CLEAR_CART,
+});
+
+export const clearedCart = () => ({
+  type: CLEARED_CART,
 });
