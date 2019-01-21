@@ -46,9 +46,6 @@ const mapStateToProps = state => ({
   loaded: state.cart.loaded,
 });
 
-const mapDispatchToProps = dispatch => ({});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
 )(CartCheckoutPage);
