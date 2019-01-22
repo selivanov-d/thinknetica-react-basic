@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UncontrolledAlert } from 'reactstrap';
-import get from 'lodash/get';
+import get from 'lodash-es/get';
 
 import { indexPagePath } from 'helpers/pathes';
 import CatalogItemsContainer from 'components/Catalog/CatalogItemsContainer';

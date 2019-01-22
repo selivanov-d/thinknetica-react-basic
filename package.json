@@ -26,6 +26,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.0",
+    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
   },
@@ -41,7 +42,7 @@
     "contentful": "^7.0.5",
     "history": "^4.7.2",
     "hoist-non-react-methods": "^1.1.0",
-    "lodash": "^4.17.11",
+    "lodash-es": "^4.17.11",
     "prop-types": "^15.6.2",
     "qs": "^6.6.0",
     "randomatic": "^3.1.1",
@@ -70,9 +71,8 @@
     "middleware": "./src/js/middleware"
   },
   "scripts": {
-    "start": "parcel index.html --no-autoinstall",
-    "dev": "parcel watch index.html --no-autoinstall",
-    "build": "webpack-cli",
+    "dev": "webpack-dev-server",
+    "build": "webpack --mode=production",
     "lint": "eslint './src/**/*.js'"
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import noop from 'lodash/noop';
+import noop from 'lodash-es/noop';
 
 const GalleryContext = React.createContext({
   currentGalleryImage: {
