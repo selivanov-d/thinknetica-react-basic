@@ -51,6 +51,7 @@
     "randomatic": "^3.1.1",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-helmet": "^5.2.0",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
     "react-router-config": "^4.4.0-beta.6",

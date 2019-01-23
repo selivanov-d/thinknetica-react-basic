@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UncontrolledAlert } from 'reactstrap';
 import get from 'lodash-es/get';
+import Helmet from 'react-helmet';
 
 import { indexPagePath } from 'helpers/pathes';
 import CatalogItemsContainer from 'components/Catalog/CatalogItemsContainer';
@@ -30,6 +31,10 @@ class IndexPage extends Component {
 
     return (
       <>
+        <Helmet>
+          <title>Главная страница</title>
+        </Helmet>
+
         {
           alert && (
             <UncontrolledAlert color="info" className="page_alert">

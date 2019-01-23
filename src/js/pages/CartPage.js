@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Helmet from 'react-helmet';
 
 import { indexPagePath } from 'helpers/pathes';
 import Cart from 'components/Cart/Cart';
@@ -9,21 +10,26 @@ import CartItemPropTypes from 'proptypes/cart-item';
 import { updateProductInCart } from 'actions/cart';
 
 const CartPage = ({ items, loaded }) => (
-  <main className="page -cart">
-    <h1 className="page_title">Корзина</h1>
+  <>
+    <Helmet>
+      <title>Корзина</title>
+    </Helmet>
+    <main className="page -cart">
+      <h1 className="page_title">Корзина</h1>
 
-    {loaded && items.length > 0 && <Cart items={items} />}
+      {loaded && items.length > 0 && <Cart items={items} />}
 
-    {
-      loaded && items.length === 0 && (
-        <Redirect to={{
-          pathname: indexPagePath(),
-          state: { redirectReason: 'Корзина пуста' },
-        }}
-        />
-      )
-    }
-  </main>
+      {
+        loaded && items.length === 0 && (
+          <Redirect to={{
+            pathname: indexPagePath(),
+            state: { redirectReason: 'Корзина пуста' },
+          }}
+          />
+        )
+      }
+    </main>
+  </>
 );
 
 CartPage.defaultProps = {
