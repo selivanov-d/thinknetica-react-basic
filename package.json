@@ -79,6 +79,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config ./webpack.development.config.js",
     "build": "webpack --config ./webpack.production.config.js",
+    "deploy": "pm2 deploy pm2.config.js production update",
     "start-express": "node ./initializers/server/index.js ",
     "cleanup": "rm -rf public/assets",
     "lint": "eslint './src/**/*.js'"
