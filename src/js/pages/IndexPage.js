@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UncontrolledAlert } from 'reactstrap';
-import get from 'lodash-es/get';
+import get from 'lodash/get';
 import Helmet from 'react-helmet';
 
 import { indexPagePath } from 'helpers/pathes';

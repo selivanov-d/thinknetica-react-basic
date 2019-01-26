@@ -1,5 +1,5 @@
 import randomize from 'randomatic';
-import pick from 'lodash-es/pick';
+import pick from 'lodash/pick';
 
 import API_CALL from 'constants/action-types/api';
 import {

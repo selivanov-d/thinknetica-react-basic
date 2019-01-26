@@ -1,6 +1,6 @@
 import { parse } from 'qs';
-import compact from 'lodash-es/compact';
-import map from 'lodash-es/map';
+import compact from 'lodash/compact';
+import map from 'lodash/map';
 
 export default (store, { location, params, routes }) => {
   const query = parse(location.search, { ignoreQueryPrefix: true });

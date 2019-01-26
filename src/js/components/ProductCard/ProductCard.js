@@ -8,7 +8,7 @@ import {
   CardText,
 } from 'reactstrap';
 import cn from 'classnames';
-import get from 'lodash-es/get';
+import get from 'lodash/get';
 
 import { catalogItemPagePath } from 'helpers/pathes';
 import ProductPropTypes from 'proptypes/product';

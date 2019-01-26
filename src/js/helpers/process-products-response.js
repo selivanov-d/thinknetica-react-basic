@@ -1,5 +1,5 @@
-import get from 'lodash-es/get';
-import pick from 'lodash-es/pick';
+import get from 'lodash/get';
+import pick from 'lodash/pick';
 
 export default ({ items, includes }) => (
   items.reduce((processedProducts, rawProduct) => {
