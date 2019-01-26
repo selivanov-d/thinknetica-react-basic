@@ -1,4 +1,11 @@
 export const spaceId = 'hrkkyfuzdnak';
-export const accessToken = 'ad9d356126ef543efb52a671c65184ed62b0bf84a425aead754389d6dfe20fc0';
-export const contentTypeId = 'catalogItem';
-export const apiBase = 'https://cdn.contentful.com';
+export const environmentId = 'master';
+export const apiAccessToken = 'CFPAT-a83cec7d6f9751b29641d4914afd2a904a93ee4b84b78921ca4c7cefa59f45f1';
+export const cdnAccessToken = 'ad9d356126ef543efb52a671c65184ed62b0bf84a425aead754389d6dfe20fc0';
+export const catalogItemContentTypeId = 'catalogItem';
+export const contactsMessageContentTypeId = 'contactsMessage';
+export const orderContentTypeId = 'order';
+export const cdnBase = 'https://cdn.contentful.com';
+export const apiBase = 'https://api.contentful.com';
+export const entryIdRandomaticPattern = 'a0';
+export const entryIdLength = 22;

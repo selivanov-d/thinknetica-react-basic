@@ -4,20 +4,21 @@ import {
   FETCH_PRODUCTS_FAILURE,
 } from 'constants/action-types/catalog';
 import {
-  accessToken,
-  contentTypeId,
+  cdnAccessToken,
+  catalogItemContentTypeId,
   spaceId,
-  apiBase,
+  environmentId,
+  cdnBase,
 } from 'constants/contentful';
 import API_CALL from 'constants/action-types/api';
 
 const fetchProducts = () => ({
   [API_CALL]: {
-    endpoint: `${apiBase}/spaces/${spaceId}/entries`,
+    endpoint: `${cdnBase}/spaces/${spaceId}/environments/${environmentId}/entries`,
     method: 'GET',
     query: {
-      access_token: accessToken,
-      content_type: contentTypeId,
+      access_token: cdnAccessToken,
+      content_type: catalogItemContentTypeId,
     },
     types: [
       FETCH_PRODUCTS_REQUEST,
